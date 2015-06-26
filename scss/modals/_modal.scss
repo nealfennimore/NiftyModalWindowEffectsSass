@@ -1,0 +1,69 @@
+/* General styles for the modal */
+
+/*
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the
+perspective effects (not including the modals and the overlay).
+*/
+
+.#{$global-ns}-perspective {
+    height: 100%;
+    overflow: hidden;
+
+    body {
+        @extend .#{$global-ns}-perspective;
+        @include perspective-prefix($perspective-body);
+        background: $perspective-body-bg;
+    }
+}
+
+.#{$global-ns}-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: $modal-max-width;
+    min-width: $modal-max-height;
+    width: $modal-width;
+    height: auto;
+    z-index: $modal-zindex;
+    visibility: hidden;
+    @include backface-visibility-prefix(hidden);
+    @include transform-prefix(translateX(-50%) translateY(-50%));
+
+    &.#{$global-ns}-show {
+        visibility: visible;
+
+        &~ .#{$global-ns}-overlay {
+            opacity: $overlay-opacity;
+            visibility: visible;
+        }
+    }
+
+    .#{$global-ns}-content {
+        color: #fff;
+        background: $content-bg;
+        position: relative;
+        border-radius: 3px;
+        margin: 0 auto;
+
+        @import 'modal-content';
+    }
+}
+
+
+.#{$global-ns}-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: $overlay-zindex;
+    opacity: 0;
+    background: $overlay-bg;
+    @include transition-prefix($overlay-transition);
+}
+
+@media screen and (max-width: 32em) {
+    body { font-size: 75%; }
+}
