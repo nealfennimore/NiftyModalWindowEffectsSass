@@ -1,16 +1,18 @@
 @if $use-3dRotateFromBottom == true {
 
     /* Effect 14:  3D Rotate from bottom */
-    .#{$global-ns}-3dRotateFromBottom.#{$global-ns}-modal {
-        perspective: 1300px;
-    }
+    .#{$global-ns}-3dRotateFromBottom {
+        &.#{$global-ns}-modal {
+            perspective: 1300px;
+        }
 
-    .#{$global-ns}-3dRotateFromBottom .#{$global-ns}-content {
-        transform-style: preserve-3d;
-        transform: translateY(100%) rotateX(90deg);
-        transform: 0 100%;
-        transition: all 0.3s ease-out;
-        opacity: 0;
+        .#{$global-ns}-content {
+            transform-style: preserve-3d;
+            transform: translateY(100%) rotateX(90deg);
+            transform: 0 100%;
+            transition: all 0.3s ease-out;
+            opacity: 0;
+        }
     }
 
     .#{$global-ns}-show.#{$global-ns}-3dRotateFromBottom .#{$global-ns}-content {

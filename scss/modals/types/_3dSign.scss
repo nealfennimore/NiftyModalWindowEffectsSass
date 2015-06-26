@@ -1,16 +1,18 @@
 @if $use-3dSign == true {
 
     /* Effect 10: 3D sign */
-    .#{$global-ns}-3dSign.#{$global-ns}-modal {
-        perspective: 1300px;
-    }
+    .#{$global-ns}-3dSign {
+        &.#{$global-ns}-modal {
+            perspective: 1300px;
+        }
 
-    .#{$global-ns}-3dSign .#{$global-ns}-content {
-        transform-style: preserve-3d;
-        transform: rotateX(-60deg);
-        transform-origin: 50% 0;
-        transition: all 0.3s;
-        opacity: 0;
+        .#{$global-ns}-content {
+            transform-style: preserve-3d;
+            transform: rotateX(-60deg);
+            transform-origin: 50% 0;
+            transition: all 0.3s;
+            opacity: 0;
+        }
     }
 
     .#{$global-ns}-show.#{$global-ns}-3dSign .#{$global-ns}-content {

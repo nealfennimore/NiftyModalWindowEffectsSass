@@ -1,14 +1,16 @@
 @if $use-fall == true {
     /* Effect 5: fall */
-    .#{$global-ns}-fall.#{$global-ns}-modal {
-        perspective: 1300px;
+    .#{$global-ns}-fall {
+        &.#{$global-ns}-modal {
+            perspective: 1300px;
+        }
+        .#{$global-ns}-content {
+            transform-style: preserve-3d;
+            transform: translateZ(600px) rotateX(20deg);
+            opacity: 0;
+        }
     }
 
-    .#{$global-ns}-fall .#{$global-ns}-content {
-        transform-style: preserve-3d;
-        transform: translateZ(600px) rotateX(20deg);
-        opacity: 0;
-    }
 
     .#{$global-ns}-show.#{$global-ns}-fall .#{$global-ns}-content {
         transition: all 0.3s ease-in;

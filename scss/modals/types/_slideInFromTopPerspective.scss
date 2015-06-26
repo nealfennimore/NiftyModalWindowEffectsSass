@@ -1,12 +1,20 @@
 @if $use-slideInFromTopPerspective == true {
     /* Effect 19:  Slip in from the top with perspective on container */
-    .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective ~ .container {
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective ~ .#{$global-ns}-overlay {
-        transition: all 0.5s;
+    .#{$global-ns}-show {
+        &.#{$global-ns}-slideInFromTopPerspective {
+            ~ .container {
+                height: 100%;
+                overflow: hidden;
+            }
+            ~ .#{$global-ns}-overlay {
+                transition: all 0.5s;
+            }
+            .#{$global-ns}-content {
+                transform: translateY(0);
+                transition: all 0.5s 0.1s;
+                opacity: 1;
+            }
+        }
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective ~ .container,
@@ -16,21 +24,15 @@
         animation: OpenTop 0.5s forwards ease-in;
     }
 
-    @keyframes OpenTop {
-        50% {
-            transform: rotateX(10deg);
-            animation-timing-function: ease-out;
-        }
-    }
-
     .#{$global-ns}-slideInFromTopPerspective .#{$global-ns}-content {
         transform: translateY(-200%);
         opacity: 0;
     }
 
-    .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective .#{$global-ns}-content {
-        transform: translateY(0);
-        transition: all 0.5s 0.1s;
-        opacity: 1;
+    @keyframes OpenTop {
+        50% {
+            transform: rotateX(10deg);
+            animation-timing-function: ease-out;
+        }
     }
 }

@@ -1,9 +1,19 @@
 @if $use-slideInFromBottomPerspective == true {
     /* Effect 17:  Slide in from bottom with perspective on container */
-    .#{$global-ns}-show.#{$global-ns}-slideInFromBottomPerspective ~ .container {
-        height: 100%;
-        overflow: hidden;
-        transition: transform 0.3s;
+    .#{$global-ns}-show {
+        &.#{$global-ns}-slideInFromBottomPerspective {
+            ~ .container {
+                height: 100%;
+                overflow: hidden;
+                transition: transform 0.3s;
+            }
+
+            .#{$global-ns}-content {
+                transform: translateY(0);
+                transition: all 0.3s 0.2s;
+                opacity: 1;
+            }
+        }
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromBottomPerspective ~ .container,
@@ -16,11 +26,5 @@
     .#{$global-ns}-slideInFromBottomPerspective .#{$global-ns}-content {
         opacity: 0;
         transform: translateY(200%);
-    }
-
-    .#{$global-ns}-show.#{$global-ns}-slideInFromBottomPerspective .#{$global-ns}-content {
-        transform: translateY(0);
-        transition: all 0.3s 0.2s;
-        opacity: 1;
     }
 }

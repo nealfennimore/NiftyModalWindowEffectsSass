@@ -3,12 +3,12 @@
     .#{$global-ns}-slideStickTop{
         transform: translateX(-50%);
         top: 0;
-    }
 
-    .#{$global-ns}-slideStickTop .#{$global-ns}-content {
-        transform: translateY(-200%);
-        transition: all 0.3s;
-        opacity: 0;
+        .#{$global-ns}-content {
+            transform: translateY(-200%);
+            transition: all 0.3s;
+            opacity: 0;
+        }
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideStickTop .#{$global-ns}-content {
