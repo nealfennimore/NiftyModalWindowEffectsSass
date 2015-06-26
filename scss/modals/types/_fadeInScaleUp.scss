@@ -1,13 +1,13 @@
 @if $use-fadeInScaleUp == true {
     /* Effect 1: Fade in and scale up */
     .#{$global-ns}-fadeInScaleUp .#{$global-ns}-content {
-        @include transform-prefix(scale(0.7));
-        @include transition-prefix(all 0.3s);
+        transform: scale(0.7);
+        transition: all 0.3s;
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-fadeInScaleUp .#{$global-ns}-content {
-        @include transform-prefix(scale(1));
+        transform: scale(1);
         opacity: 1;
     }
 }

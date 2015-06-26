@@ -7,14 +7,14 @@
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .#{$global-ns}-overlay {
         background: rgba(143,27,15,0.8);
-        @include transition-prefix(all 0.5s);
+        transition: all 0.5s;
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .container,
     .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .#{$global-ns}-overlay {
-        @include transform-style-prefix(preserve-3d);
-        @include transform-origin-prefix(0% 50%);
-        @include animation-prefix(rotateRightSideFirst 0.5s forwards ease-in);
+        transform-style: preserve-3d;
+        transform-origin: 0% 50%;
+        animation: rotateRightSideFirst 0.5s forwards ease-in;
     }
 
     @-webkit-keyframes rotateRightSideFirst {
@@ -33,13 +33,13 @@
     }
 
     .#{$global-ns}-slideInFromRightPerspective .#{$global-ns}-content {
-        @include transform-prefix(translateX(200%));
+        transform: translateX(200%);
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective .#{$global-ns}-content {
-        @include transform-prefix(translateX(0));
+        transform: translateX(0);
         opacity: 1;
-        @include transition-prefix(all 0.5s 0.1s);
+        transition: all 0.5s 0.1s;
     }
 }

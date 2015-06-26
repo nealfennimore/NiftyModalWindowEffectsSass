@@ -12,7 +12,7 @@ perspective effects (not including the modals and the overlay).
 
     body {
         @extend .#{$global-ns}-perspective;
-        @include perspective-prefix($perspective-body);
+        perspective: $perspective-body;
         background: $perspective-body-bg;
     }
 }
@@ -27,8 +27,8 @@ perspective effects (not including the modals and the overlay).
     height: auto;
     z-index: $modal-zindex;
     visibility: hidden;
-    @include backface-visibility-prefix(hidden);
-    @include transform-prefix(translateX(-50%) translateY(-50%));
+    backface-visibility: hidden;
+    transform: translateX(-50%) translateY(-50%);
 
     &.#{$global-ns}-show {
         visibility: visible;
@@ -61,7 +61,7 @@ perspective effects (not including the modals and the overlay).
     z-index: $overlay-zindex;
     opacity: 0;
     background: $overlay-bg;
-    @include transition-prefix($overlay-transition);
+    transition: $overlay-transition;
 }
 
 @media screen and (max-width: 32em) {

@@ -5,21 +5,21 @@
     }
 
     .#{$global-ns}-show.#{$global-ns}-blur ~ .container {
-        @include filter-prefix(blur(3px));
+        filter: blur(3px);
     }
 
     .#{$global-ns}-blur .#{$global-ns}-content {
-        @include transform-prefix(translateY(-5%));
+        transform: translateY(-5%);
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-blur ~ .container,
     .#{$global-ns}-blur .#{$global-ns}-content {
-        @include transition-prefix(all 0.3s);
+        transition: all 0.3s;
     }
 
     .#{$global-ns}-show.#{$global-ns}-blur .#{$global-ns}-content {
-        @include transform-prefix(translateY(0));
+        transform: translateY(0);
         opacity: 1;
     }
 }

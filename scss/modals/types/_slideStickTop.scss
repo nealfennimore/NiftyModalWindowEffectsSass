@@ -1,18 +1,18 @@
 @if $use-slideSlickTop == true {
     /* Effect 7:  slide and stick to top */
     .#{$global-ns}-slideStickTop{
-        @include transform-prefix(translateX(-50%));
+        transform: translateX(-50%);
         top: 0;
     }
 
     .#{$global-ns}-slideStickTop .#{$global-ns}-content {
-        @include transform-prefix(translateY(-200%));
-        @include transition-prefix(all 0.3s);
+        transform: translateY(-200%);
+        transition: all 0.3s;
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideStickTop .#{$global-ns}-content {
-        @include transform-prefix(translateY(0%));
+        transform: translateY(0%);
         border-radius: 0 0 3px 3px;
         opacity: 1;
     }

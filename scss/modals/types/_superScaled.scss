@@ -1,13 +1,13 @@
 @if $use-superScaled == true {
     /* Effect 11: Super scaled */
     .#{$global-ns}-superScaled .#{$global-ns}-content {
-        @include transform-prefix(scale(2));
-        @include transition-prefix(all 0.3s);
+        transform: scale(2);
+        transition: all 0.3s;
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-superScaled .#{$global-ns}-content {
-        @include transform-prefix(scale(1));
+        transform: scale(1);
         opacity: 1;
     }
 }

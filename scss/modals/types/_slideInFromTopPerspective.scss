@@ -6,28 +6,14 @@
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective ~ .#{$global-ns}-overlay {
-        @include transition-prefix(all 0.5s);
+        transition: all 0.5s;
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective ~ .container,
     .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective ~ .#{$global-ns}-overlay {;
-        @include transform-style-prefix(preserve-3d);
-        @include transform-origin-prefix(50% 100%);
-        @include animation-prefix(OpenTop 0.5s forwards ease-in);
-    }
-
-    @-webkit-keyframes OpenTop {
-        50% {
-            -webkit-transform: rotateX(10deg);
-            -webkit-animation-timing-function: ease-out;
-        }
-    }
-
-    @-moz-keyframes OpenTop {
-        50% {
-            -moz-transform: rotateX(10deg);
-            -moz-animation-timing-function: ease-out;
-        }
+        transform-style: preserve-3d;
+        transform-origin: 50% 100%;
+        animation: OpenTop 0.5s forwards ease-in;
     }
 
     @keyframes OpenTop {
@@ -38,13 +24,13 @@
     }
 
     .#{$global-ns}-slideInFromTopPerspective .#{$global-ns}-content {
-        @include transform-prefix(translateY(-200%));
+        transform: translateY(-200%);
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-slideInFromTopPerspective .#{$global-ns}-content {
-        @include transform-prefix(translateY(0));
-        @include transition-prefix(all 0.5s 0.1s);
+        transform: translateY(0);
+        transition: all 0.5s 0.1s;
         opacity: 1;
     }
 }

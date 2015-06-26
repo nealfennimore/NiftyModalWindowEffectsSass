@@ -1,18 +1,18 @@
 @if $use-fall == true {
     /* Effect 5: fall */
     .#{$global-ns}-fall.#{$global-ns}-modal {
-        @include perspective-prefix(1300px);
+        perspective: 1300px;
     }
 
     .#{$global-ns}-fall .#{$global-ns}-content {
-        @include transform-style-prefix(preserve-3d);
-        @include transform-prefix(translateZ(600px) rotateX(20deg));
+        transform-style: preserve-3d;
+        transform: translateZ(600px) rotateX(20deg);
         opacity: 0;
     }
 
     .#{$global-ns}-show.#{$global-ns}-fall .#{$global-ns}-content {
-        @include transition-prefix(all 0.3s ease-in);
-        @include transform-prefix(translateZ(0px) rotateX(0deg));
+        transition: all 0.3s ease-in;
+        transform: translateZ(0px) rotateX(0deg);
         opacity: 1;
     }
 }

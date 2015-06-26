@@ -1,8 +1,8 @@
 @if $use-justMe == true {
     /* Effect 12:  Just me */
     .#{$global-ns}-justMe .#{$global-ns}-content {
-        @include transform-prefix(scale(0.8));
-        @include transition-prefix(all 0.3s);
+        transform: scale(0.8);
+        transition: all 0.3s;
         opacity: 0;
     }
 
@@ -16,7 +16,7 @@
     }
 
     .#{$global-ns}-show.#{$global-ns}-justMe .#{$global-ns}-content {
-        @include transform-prefix(scale(1));
+        transform: scale(1);
         opacity: 1;
     }
 }
