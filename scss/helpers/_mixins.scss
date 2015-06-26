@@ -1,0 +1,94 @@
+//===============================================================//
+// Generate keyframes animations with vendor prefixes in one hit //
+//===============================================================//
+//      .fadeIn {                                                //
+//          @include animation-prefix(animation, fadeIn);        //
+//      }                                                        //
+//      @include animation-keyframe(fadeIn) {                      //
+//          0% {opacity: 0;}                                     //
+//          100% {opacity: 1;}                                   //
+//      }                                                        //
+//===============================================================//
+// Courtesy of @integralist: (twitter.com)                       //
+//===============================================================//
+
+@mixin animation-keyframe($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+/// Mixin to prefix several properties at once
+/// @author Hugo Giraudel
+/// @param {Map} $declarations - Declarations to prefix
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+@mixin transform-prefix($value){
+    @include prefix((
+        transform: $value
+    ), webkit moz ms)
+}
+
+@mixin animation-prefix($value){
+    @include prefix((
+        animation: $value
+    ), webkit moz o)
+}
+
+@mixin transform-style-prefix($value){
+    @include prefix((
+        transform-style: $value
+    ), webkit moz)
+}
+
+@mixin transform-origin-prefix($value){
+    @include prefix((
+        transform-origin: $value
+    ), webkit moz)
+}
+
+@mixin perspective-prefix($value){
+    @include prefix((
+        perspective: $value
+    ), webkit moz)
+}
+
+@mixin transition-prefix($value){
+    @include prefix((
+        transition: $value
+    ), webkit moz)
+}
+
+@mixin backface-visibility-prefix($value){
+    @include prefix((
+        backface-visibility: $value
+    ), webkit moz)
+}
+
+@mixin filter-prefix($value){
+    @include prefix((
+        filter: $value
+    ), webkit moz)
+}

@@ -1,0 +1,493 @@
+/* General styles for the modal */
+
+/*
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the
+perspective effects (not including the modals and the overlay).
+*/
+.md-perspective,
+.md-perspective body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.md-perspective body  {
+    background: $perspective-body-bg;
+    @include perspective-prefix($perspective-body);
+}
+
+.container {
+    background: $container-bg;
+    min-height: 100%;
+}
+
+.md-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: $modal-max-width;
+    min-width: $modal-max-height;
+    width: $modal-width;
+    height: auto;
+    z-index: $modal-zindex;
+    visibility: hidden;
+    @include backface-visibility-prefix(hidden);
+    @include transform-prefix(translateX(-50%) translateY(-50%));
+}
+
+.md-show {
+    visibility: visible;
+}
+
+.md-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: $overlay-zindex;
+    opacity: 0;
+    background: $overlay-bg;
+    @include transition-prefix($overlay-transition);
+}
+
+.md-show ~ .md-overlay {
+    opacity: $overlay-opacity;
+    visibility: visible;
+}
+
+/* Content styles */
+
+.md-content {
+    color: #fff;
+    background: $content-bg;
+    position: relative;
+    border-radius: 3px;
+    margin: 0 auto;
+    h3 {
+        margin: 0;
+        padding: 0.4em;
+        text-align: center;
+        font-size: 2.4em;
+        font-weight: 300;
+        opacity: 0.8;
+        background: rgba(0,0,0,0.1);
+        border-radius: 3px 3px 0 0;
+    }
+    > div {
+        padding: 15px 40px 30px;
+        margin: 0;
+        font-weight: 300;
+        font-size: 1.15em;
+        p {
+            margin: 0;
+            padding: 10px 0;
+        }
+        ul {
+            margin: 0;
+            padding: 0 0 30px 20px;
+            li {
+                padding: 5px 0;
+            }
+        }
+    }
+    button {
+        display: block;
+        margin: 0 auto;
+        font-size: 0.8em;
+    }
+}
+
+/* Individual modal styles with animations/transitions */
+
+/* Effect 1: Fade in and scale up */
+.md-fadeInScaleUp .md-content {
+    @include transform-prefix(scale(0.7));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-fadeInScaleUp .md-content {
+    @include transform-prefix(scale(1));
+    opacity: 1;
+}
+
+/* Effect 2: Slide from the right */
+.md-slideInFromRight .md-content {
+    @include transform-prefix(translateX(20%));
+    @include transition-prefix(all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9));
+    opacity: 0;
+}
+
+.md-show.md-slideInFromRight .md-content {
+    @include transform-prefix(translateX(0));
+    opacity: 1;
+}
+
+/* Effect 3: Slide from the bottom */
+.md-slideInFromBottom .md-content {
+    @include transform-prefix(translateY(20%));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-slideInFromBottom .md-content {
+    @include transform-prefix(translateY(0));
+    opacity: 1;
+}
+
+/* Effect 4: Newspaper */
+.md-newspaper .md-content {
+    @include transform-prefix(scale(0) rotate(720deg));
+    opacity: 0;
+}
+
+.md-show.md-newspaper ~ .md-overlay,
+.md-newspaper .md-content {
+    @include transition-prefix(all 0.5s);
+}
+
+.md-show.md-newspaper .md-content {
+    @include transform-prefix(scale(1) rotate(0deg));
+    opacity: 1;
+}
+
+/* Effect 5: fall */
+.md-fall.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-fall .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(translateZ(600px) rotateX(20deg));
+    opacity: 0;
+}
+
+.md-show.md-fall .md-content {
+    @include transition-prefix(all 0.3s ease-in);
+    @include transform-prefix(translateZ(0px) rotateX(0deg));
+    opacity: 1;
+}
+
+/* Effect 6: side fall */
+.md-sideFall.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-sideFall .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(translate(30%) translateZ(600px) rotate(10deg));
+    opacity: 0;
+}
+
+.md-show.md-sideFall .md-content {
+    @include transition-prefix(all 0.3s ease-in);
+    @include transform-prefix(translate(0%) translateZ(0) rotate(0deg));
+    opacity: 1;
+}
+
+/* Effect 7:  slide and stick to top */
+.md-slideStickTop{
+    @include transform-prefix(translateX(-50%));
+    top: 0;
+}
+
+.md-slideStickTop .md-content {
+    @include transform-prefix(translateY(-200%));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-slideStickTop .md-content {
+    @include transform-prefix(translateY(0%));
+    border-radius: 0 0 3px 3px;
+    opacity: 1;
+}
+
+/* Effect 8: 3D flip horizontal */
+.md-3dHorizontalFlip.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-3dHorizontalFlip .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(rotateY(-70deg));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-3dHorizontalFlip .md-content {
+    @include transform-prefix(rotateY(0deg));
+    opacity: 1;
+}
+
+/* Effect 9: 3D flip vertical */
+.md-3dVerticalFlip.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-3dVerticalFlip .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(rotateX(-70deg));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-3dVerticalFlip .md-content {
+    @include transform-prefix(rotateX(0deg));
+    opacity: 1;
+}
+
+/* Effect 10: 3D sign */
+.md-3dSign.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-3dSign .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(rotateX(-60deg));
+    @include transform-origin-prefix(50% 0);
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-3dSign .md-content {
+    @include transform-prefix(rotateX(0deg));
+    opacity: 1;
+}
+
+/* Effect 11: Super scaled */
+.md-superScaled .md-content {
+    @include transform-prefix(scale(2));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-superScaled .md-content {
+    @include transform-prefix(scale(1));
+    opacity: 1;
+}
+
+/* Effect 12:  Just me */
+.md-justMe .md-content {
+    @include transform-prefix(scale(0.8));
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-justMe ~ .md-overlay {
+    background: $content-bg;
+}
+
+.md-justMe .md-content h3,
+.md-justMe .md-content {
+    background: transparent;
+}
+
+.md-show.md-justMe .md-content {
+    @include transform-prefix(scale(1));
+    opacity: 1;
+}
+
+/* Effect 13: 3D slit */
+.md-3dSlit.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-3dSlit .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(translateZ(-3000px) rotateY(90deg));
+    opacity: 0;
+}
+
+.md-show.md-3dSlit .md-content {
+    @include animation-prefix(slit .7s forwards ease-out);
+}
+
+@include animation-keyframe(slit) {
+    50% { transform: translateZ(-250px) rotateY(89deg); opacity: 1; animation-timing-function: ease-in;}
+    100% { transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+/* Effect 14:  3D Rotate from bottom */
+.md-3dRotateFromBottom.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-3dRotateFromBottom .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(translateY(100%) rotateX(90deg));
+    @include transform-origin-prefix(0 100%);
+    @include transition-prefix(all 0.3s ease-out);
+    opacity: 0;
+}
+
+.md-show.md-3dRotateFromBottom .md-content {
+    @include transform-prefix(translateY(0%) rotateX(0deg));
+    opacity: 1;
+}
+
+/* Effect 15:  3D Rotate in from left */
+.md-3dRotateInLeft.md-modal {
+    @include perspective-prefix(1300px);
+}
+
+.md-3dRotateInLeft .md-content {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-prefix(translateZ(100px) translateX(-30%) rotateY(90deg));
+    @include transform-origin-prefix(0 100%);
+    @include transition-prefix(all 0.3s);
+    opacity: 0;
+}
+
+.md-show.md-3dRotateInLeft .md-content {
+    @include transform-prefix(translateZ(0px) translateX(0%) rotateY(0deg));
+    opacity: 1;
+}
+
+/* Effect 16:  Blur */
+.md-show.md-blur ~ .md-overlay {
+    background: rgba(180,46,32,0.5);
+}
+
+.md-show.md-blur ~ .container {
+    @include filter-prefix(blur(3px));
+}
+
+.md-blur .md-content {
+    @include transform-prefix(translateY(-5%));
+    opacity: 0;
+}
+
+.md-show.md-blur ~ .container,
+.md-blur .md-content {
+    @include transition-prefix(all 0.3s);
+}
+
+.md-show.md-blur .md-content {
+    @include transform-prefix(translateY(0));
+    opacity: 1;
+}
+
+/* Effect 17:  Slide in from bottom with perspective on container */
+.md-show.md-slideInFromBottom ~ .container {
+    height: 100%;
+    overflow: hidden;
+    @include transition-prefix(transform 0.3s);
+}
+
+.md-show.md-slideInFromBottom ~ .container,
+.md-show.md-slideInFromBottom ~ .md-overlay  {
+    @include transform-prefix(rotateX(-2deg));
+    @include transform-origin-prefix(50% 0%);
+    @include transform-style-prefix(preserve-3d);
+}
+
+.md-slideInFromBottom .md-content {
+    opacity: 0;
+    @include transform-prefix(translateY(200%));
+}
+
+.md-show.md-slideInFromBottom .md-content {
+    @include transform-prefix(translateY(0));
+    @include transition-prefix(all 0.3s 0.2s);
+    opacity: 1;
+}
+
+/* Effect 18:  Slide from right with perspective on container */
+.md-show.md-slideInFromRight ~ .container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.md-show.md-slideInFromRight ~ .md-overlay {
+    background: rgba(143,27,15,0.8);
+    @include transition-prefix(all 0.5s);
+}
+
+.md-show.md-slideInFromRight ~ .container,
+.md-show.md-slideInFromRight ~ .md-overlay {
+    @include transform-style-prefix(preserve-3d);
+    @include transform-origin-prefix(0% 50%);
+    @include animation-prefix(rotateRightSideFirst 0.5s forwards ease-in);
+}
+
+@-webkit-keyframes rotateRightSideFirst {
+    50% { -webkit-transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; }
+    100% { -webkit-transform: translateZ(-200px); }
+}
+
+@-moz-keyframes rotateRightSideFirst {
+    50% { -moz-transform: translateZ(-50px) rotateY(5deg); -moz-animation-timing-function: ease-out; }
+    100% { -moz-transform: translateZ(-200px); }
+}
+
+@keyframes rotateRightSideFirst {
+    50% { transform: translateZ(-50px) rotateY(5deg); animation-timing-function: ease-out; }
+    100% { transform: translateZ(-200px); }
+}
+
+.md-slideInFromRight .md-content {
+    @include transform-prefix(translateX(200%));
+    opacity: 0;
+}
+
+.md-show.md-slideInFromRight .md-content {
+    @include transform-prefix(translateX(0));
+    opacity: 1;
+    @include transition-prefix(all 0.5s 0.1s);
+}
+
+/* Effect 19:  Slip in from the top with perspective on container */
+.md-show.md-slipInFromTop ~ .container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.md-show.md-slipInFromTop ~ .md-overlay {
+    @include transition-prefix(all 0.5s);
+}
+
+.md-show.md-slipInFromTop ~ .container,
+.md-show.md-slipInFromTop ~ .md-overlay {;
+    @include transform-style-prefix(preserve-3d);
+    @include transform-origin-prefix(50% 100%);
+    @include animation-prefix(OpenTop 0.5s forwards ease-in);
+}
+
+@-webkit-keyframes OpenTop {
+    50% {
+        -webkit-transform: rotateX(10deg);
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@-moz-keyframes OpenTop {
+    50% {
+        -moz-transform: rotateX(10deg);
+        -moz-animation-timing-function: ease-out;
+    }
+}
+
+@keyframes OpenTop {
+    50% {
+        transform: rotateX(10deg);
+        animation-timing-function: ease-out;
+    }
+}
+
+.md-slipInFromTop .md-content {
+    @include transform-prefix(translateY(-200%));
+    opacity: 0;
+}
+
+.md-show.md-slipInFromTop .md-content {
+    @include transform-prefix(translateY(0));
+    @include transition-prefix(all 0.5s 0.1s);
+    opacity: 1;
+}
+
+@media screen and (max-width: 32em) {
+    body { font-size: 75%; }
+}
