@@ -1,0 +1,18 @@
+@if $use-3dVerticalFlip == true {
+    /* Effect 9: 3D flip vertical */
+    .#{$global-ns}-3dVerticalFlip.#{$global-ns}-modal {
+        @include perspective-prefix(1300px);
+    }
+
+    .#{$global-ns}-3dVerticalFlip .#{$global-ns}-content {
+        @include transform-style-prefix(preserve-3d);
+        @include transform-prefix(rotateX(-70deg));
+        @include transition-prefix(all 0.3s);
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-3dVerticalFlip .#{$global-ns}-content {
+        @include transform-prefix(rotateX(0deg));
+        opacity: 1;
+    }
+}

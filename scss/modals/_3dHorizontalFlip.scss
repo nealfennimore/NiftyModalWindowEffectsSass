@@ -1,0 +1,20 @@
+@if $use-3dHorizontalFlip == true {
+
+    /* Effect 8: 3D flip horizontal */
+    .#{$global-ns}-3dHorizontalFlip.#{$global-ns}-modal {
+        @include perspective-prefix(1300px);
+    }
+
+    .#{$global-ns}-3dHorizontalFlip .#{$global-ns}-content {
+        @include transform-style-prefix(preserve-3d);
+        @include transform-prefix(rotateY(-70deg));
+        @include transition-prefix(all 0.3s);
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-3dHorizontalFlip .#{$global-ns}-content {
+        @include transform-prefix(rotateY(0deg));
+        opacity: 1;
+    }
+
+}

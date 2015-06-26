@@ -1,0 +1,13 @@
+@if $use-slideInFromBottom == true {
+    /* Effect 3: Slide from the bottom */
+    .#{$global-ns}-slideInFromBottom .#{$global-ns}-content {
+        @include transform-prefix(translateY(20%));
+        @include transition-prefix(all 0.3s);
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-slideInFromBottom .#{$global-ns}-content {
+        @include transform-prefix(translateY(0));
+        opacity: 1;
+    }
+}

@@ -1,0 +1,25 @@
+@if $use-blur == true {
+    /* Effect 16:  Blur */
+    .#{$global-ns}-show.#{$global-ns}-blur ~ .#{$global-ns}-overlay {
+        background: rgba(180,46,32,0.5);
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-blur ~ .container {
+        @include filter-prefix(blur(3px));
+    }
+
+    .#{$global-ns}-blur .#{$global-ns}-content {
+        @include transform-prefix(translateY(-5%));
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-blur ~ .container,
+    .#{$global-ns}-blur .#{$global-ns}-content {
+        @include transition-prefix(all 0.3s);
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-blur .#{$global-ns}-content {
+        @include transform-prefix(translateY(0));
+        opacity: 1;
+    }
+}

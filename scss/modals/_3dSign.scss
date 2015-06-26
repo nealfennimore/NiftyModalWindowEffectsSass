@@ -1,0 +1,20 @@
+@if $use-3dSign == true {
+
+    /* Effect 10: 3D sign */
+    .#{$global-ns}-3dSign.#{$global-ns}-modal {
+        @include perspective-prefix(1300px);
+    }
+
+    .#{$global-ns}-3dSign .#{$global-ns}-content {
+        @include transform-style-prefix(preserve-3d);
+        @include transform-prefix(rotateX(-60deg));
+        @include transform-origin-prefix(50% 0);
+        @include transition-prefix(all 0.3s);
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-3dSign .#{$global-ns}-content {
+        @include transform-prefix(rotateX(0deg));
+        opacity: 1;
+    }
+}

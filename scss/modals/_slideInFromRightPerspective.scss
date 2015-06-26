@@ -1,0 +1,45 @@
+@if $use-slideInFromRightPerspective == true {
+    /* Effect 18:  Slide from right with perspective on container */
+    .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .container {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .#{$global-ns}-overlay {
+        background: rgba(143,27,15,0.8);
+        @include transition-prefix(all 0.5s);
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .container,
+    .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective ~ .#{$global-ns}-overlay {
+        @include transform-style-prefix(preserve-3d);
+        @include transform-origin-prefix(0% 50%);
+        @include animation-prefix(rotateRightSideFirst 0.5s forwards ease-in);
+    }
+
+    @-webkit-keyframes rotateRightSideFirst {
+        50% { -webkit-transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; }
+        100% { -webkit-transform: translateZ(-200px); }
+    }
+
+    @-moz-keyframes rotateRightSideFirst {
+        50% { -moz-transform: translateZ(-50px) rotateY(5deg); -moz-animation-timing-function: ease-out; }
+        100% { -moz-transform: translateZ(-200px); }
+    }
+
+    @keyframes rotateRightSideFirst {
+        50% { transform: translateZ(-50px) rotateY(5deg); animation-timing-function: ease-out; }
+        100% { transform: translateZ(-200px); }
+    }
+
+    .#{$global-ns}-slideInFromRightPerspective .#{$global-ns}-content {
+        @include transform-prefix(translateX(200%));
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-slideInFromRightPerspective .#{$global-ns}-content {
+        @include transform-prefix(translateX(0));
+        opacity: 1;
+        @include transition-prefix(all 0.5s 0.1s);
+    }
+}

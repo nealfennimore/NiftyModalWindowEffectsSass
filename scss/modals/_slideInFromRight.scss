@@ -1,0 +1,13 @@
+@if $use-slideInFromRight == true {
+    /* Effect 2: Slide from the right */
+    .#{$global-ns}-slideInFromRight .#{$global-ns}-content {
+        @include transform-prefix(translateX(20%));
+        @include transition-prefix(all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9));
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-slideInFromRight .#{$global-ns}-content {
+        @include transform-prefix(translateX(0));
+        opacity: 1;
+    }
+}

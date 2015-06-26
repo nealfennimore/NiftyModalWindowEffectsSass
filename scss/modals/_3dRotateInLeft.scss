@@ -1,0 +1,19 @@
+@if $use-3dRotateInLeft == true {
+    /* Effect 15:  3D Rotate in from left */
+    .#{$global-ns}-3dRotateInLeft.#{$global-ns}-modal {
+        @include perspective-prefix(1300px);
+    }
+
+    .#{$global-ns}-3dRotateInLeft .#{$global-ns}-content {
+        @include transform-style-prefix(preserve-3d);
+        @include transform-prefix(translateZ(100px) translateX(-30%) rotateY(90deg));
+        @include transform-origin-prefix(0 100%);
+        @include transition-prefix(all 0.3s);
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-3dRotateInLeft .#{$global-ns}-content {
+        @include transform-prefix(translateZ(0px) translateX(0%) rotateY(0deg));
+        opacity: 1;
+    }
+}

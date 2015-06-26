@@ -1,0 +1,18 @@
+@if $use-sideFall == true {
+    /* Effect 6: side fall */
+    .#{$global-ns}-sideFall.#{$global-ns}-modal {
+        @include perspective-prefix(1300px);
+    }
+
+    .#{$global-ns}-sideFall .#{$global-ns}-content {
+        @include transform-style-prefix(preserve-3d);
+        @include transform-prefix(translate(30%) translateZ(600px) rotate(10deg));
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-sideFall .#{$global-ns}-content {
+        @include transition-prefix(all 0.3s ease-in);
+        @include transform-prefix(translate(0%) translateZ(0) rotate(0deg));
+        opacity: 1;
+    }
+}

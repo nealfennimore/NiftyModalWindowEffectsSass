@@ -1,0 +1,17 @@
+@if $use-newspaper == true {
+    /* Effect 4: Newspaper */
+    .#{$global-ns}-newspaper .#{$global-ns}-content {
+        @include transform-prefix(scale(0) rotate(720deg));
+        opacity: 0;
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-newspaper ~ .#{$global-ns}-overlay,
+    .#{$global-ns}-newspaper .#{$global-ns}-content {
+        @include transition-prefix(all 0.5s);
+    }
+
+    .#{$global-ns}-show.#{$global-ns}-newspaper .#{$global-ns}-content {
+        @include transform-prefix(scale(1) rotate(0deg));
+        opacity: 1;
+    }
+}
