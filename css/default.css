@@ -42,6 +42,11 @@ a:active {
 	padding: 2em;
 }
 
+.container {
+    background: #e74c3c;
+    min-height: 100%;
+}
+
 .container > header {
 	text-align: center;
 	background: #d94839;
@@ -162,7 +167,7 @@ button:hover {
 		width: 100%;
 		min-width: auto;
 		min-height: auto;
-		padding: 1em; 
+		padding: 1em;
 	}
 
 	.column p {
