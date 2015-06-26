@@ -3,8 +3,6 @@ $global-ns: md !default;
 $perspective-body-bg: #222 !default;
 $perspective-body: 600px !default;
 
-$container-bg: #e74c3c !default;
-
 $modal-width: 50% !default;
 $modal-max-width: 630px !default;
 $modal-max-height: 320px !default;
@@ -15,8 +13,7 @@ $overlay-transition: all 0.3s !default;
 $overlay-opacity: 1 !default;
 $overlay-zindex: 1000 !default;
 
-$content-bg: $container-bg;
-
+$content-bg: #e74c3c !default;
 
 $use-3dHorizontalFlip             : true !default;
 $use-3dRotateFromBottom           : true !default;
