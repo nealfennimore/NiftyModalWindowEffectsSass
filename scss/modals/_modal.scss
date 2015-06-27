@@ -40,10 +40,10 @@ perspective effects (not including the modals and the overlay).
     }
 
     .#{$global-ns}-content {
-        color: #fff;
+        color: $content-text-color;
         background: $content-bg;
         position: relative;
-        border-radius: 3px;
+        border-radius: $content-border-radius;
         margin: 0 auto;
 
         @import 'modal-content';
